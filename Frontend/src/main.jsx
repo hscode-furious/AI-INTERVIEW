@@ -1,19 +1,19 @@
-import { StrictMode, useEffect } from "react";
+import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
-import { ClerkProvider, useAuth } from "@clerk/react";
+import { ClerkProvider } from "@clerk/react";
 import { BrowserRouter } from "react-router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { setClerkGetToken } from "./lib/axios";
+// import { setClerkGetToken } from "./lib/axios";
 
-function ClerkAxiosSetup() {
-  const { getToken } = useAuth();
-  useEffect(() => {
-    setClerkGetToken(getToken);
-  }, [getToken]);
-  return null;
-}
+// function ClerkAxiosSetup() {
+//   const { getToken } = useAuth();
+//   useEffect(() => {
+//     setClerkGetToken(getToken);
+//   }, [getToken]);
+//   return null;
+// }
 
 // Import your Publishable Key
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
@@ -29,7 +29,7 @@ createRoot(document.getElementById("root")).render(
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>
         <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
-          <ClerkAxiosSetup />
+          {/* <ClerkAxiosSetup /> */}
           <App />
         </ClerkProvider>
       </QueryClientProvider>
